@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>User Info</title>
+</head>
+<body>
+
+	<h2>User Info Page</h2>
+	<div><a th:href="@{/logoutSuccessful}">Logout</a></div>
+
+	<br />
+	<h3 th:if="${userInfo != null}">
+		Welcome : <span th:utext="${userInfo}"></span>
+	</h3>
+	<br />
+
+</body>
+
+</html>
