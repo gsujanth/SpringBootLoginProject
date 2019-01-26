@@ -48,10 +48,14 @@ public class UserController {
 				Pattern.CASE_INSENSITIVE);
 		if (EMAIL_REGEX.matcher(userEmail).matches()) {
 			String userInfo = userService.loadUserByUsername(userEmail, password);
-			model.addAttribute("userInfo", userInfo);
-
-			return "userInfoPage";
-		}else {
+			if (userInfo != null) {
+				model.addAttribute("userInfo", userInfo);
+				return "userInfoPage";
+			}else {
+				System.out.println("Invalid password");
+				return "errorPage";
+			}
+		} else {
 			System.out.println("Invalid email address");
 			return "errorPage";
 		}
