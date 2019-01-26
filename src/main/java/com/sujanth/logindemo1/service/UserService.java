@@ -1,9 +1,12 @@
 package com.sujanth.logindemo1.service;
  
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sujanth.logindemo1.DAO.UserDAO;
+import com.sujanth.logindemo1.model.User;
 //import com.sujanth.logindemo.model.User;
  
 @Service
@@ -23,5 +26,9 @@ public class UserService {
   
         return userInfo;
     }
+    
+    public List<User> getUserRecords() {
+		return this.userDAO.getUserRecords();
+	}
  
 }
