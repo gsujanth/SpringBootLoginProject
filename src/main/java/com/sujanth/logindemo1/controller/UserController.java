@@ -42,21 +42,23 @@ public class UserController {
 
 		// String userEmail="gs@gmail.com";
 		// String password="12345";
-
+		String userInfo="";
 		final Pattern EMAIL_REGEX = Pattern.compile(
 				"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?",
 				Pattern.CASE_INSENSITIVE);
 		if (EMAIL_REGEX.matcher(userEmail).matches()) {
-			String userInfo = userService.loadUserByUsername(userEmail, password);
+			userInfo = userService.loadUserByUsername(userEmail, password);
 			if (userInfo != null) {
 				model.addAttribute("userInfo", userInfo);
 				return "userInfoPage";
 			}else {
-				System.out.println("Invalid password");
+				userInfo="Invalid Password";
+				model.addAttribute("userInfo", userInfo);
 				return "errorPage";
 			}
 		} else {
-			System.out.println("Invalid email address");
+			userInfo="Invalid Email";
+			model.addAttribute("userInfo", userInfo);
 			return "errorPage";
 		}
 	}

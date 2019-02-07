@@ -5,7 +5,14 @@
 </head>
  
 <body>
-     
+   <h2>Login Error Page</h2>
+	<div><a th:href="@{/login}">Login Page</a></div>
+
+	<br />
+	<h3 th:if="${userInfo != null}">
+		<span th:utext="${userInfo}"></span>
+	</h3>
+	<br />  
 </body>
  
 </html>
